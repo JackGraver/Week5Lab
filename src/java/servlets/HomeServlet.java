@@ -15,11 +15,6 @@ public class HomeServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//            if(request.getParameter("home") != null) {
-//                request.setAttribute("message", "Successfully logged out!");
-//                getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-//            }
-            
             User user = (User) request.getSession().getAttribute("user");
             if(user != null) {
                 if(user.getUsername() != null) {
@@ -33,10 +28,5 @@ public class HomeServlet extends HttpServlet {
             } else {
                 getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);   
             }
-    }
-    
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
     }
 }
